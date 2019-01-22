@@ -17,6 +17,39 @@ package games.game2048
  *
  * You can find more examples in 'TestGame2048Helper'.
 */
-fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> =
-        TODO()
+fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> {
+    val mutableList = this.toMutableList()
+
+    val mergeVector = mutableListOf<Boolean>()
+    var lastM = false
+    var lastV: T? = null
+
+    this.withIndex().forEach {
+        lastM = canMerge(it.value, lastM, lastV)
+        lastV = it.value
+        mergeVector.add(lastM)
+    }
+
+    mergeVector.withIndex().forEach {
+        if (it.value) {
+            mutableList[it.index] = this[it.index]?.let { it1 -> merge(it1) }
+            mutableList[it.index - 1] = null
+        }
+    }
+
+    return mutableList.filterNotNull()
+}
+
+private fun <T> canMerge(currentValue: T?, lastM: Boolean, lastValue: T?): Boolean {
+    if (currentValue == null || lastValue == null) {
+        return false
+    }
+
+    if (lastM) {
+        return false
+    }
+
+    return currentValue == lastValue
+}
+
 
