@@ -49,6 +49,13 @@ class TestSquareBoard {
     }
 
     @Test
+    fun testRowReversed_Width4() {
+        val board = createSquareBoard(4)
+        val row = board.getRow(1, 4 downTo 1)
+        Assert.assertEquals("[(1, 1), (1, 2), (1, 3), (1, 4)]", row.reversed().asString())
+    }
+
+    @Test
     fun testRowWrongRange() {
         val board = createSquareBoard(2)
         val row = board.getRow(1, 1..2)

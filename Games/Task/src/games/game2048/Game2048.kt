@@ -6,6 +6,8 @@ import board.GameBoard
 import board.createGameBoard
 import games.game.Game
 
+import games.game2048.moveAndMergeEqual
+
 /*
  * Your task is to implement the game 2048 https://en.wikipedia.org/wiki/2048_(video_game).
  * Implement the utility methods below.
@@ -41,7 +43,10 @@ class Game2048(private val initializer: Game2048Initializer<Int>) : Game {
  * Add a new value produced by 'initializer' to a specified cell in a board.
  */
 fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
-    TODO()
+    val nextValue = initializer.nextValue(this)
+    if (nextValue != null) {
+        this[nextValue.first] = nextValue.second
+    }
 }
 
 /*
@@ -53,7 +58,29 @@ fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
-    TODO()
+
+    if (rowOrColumn.isEmpty()) {
+        return false
+    }
+
+    var change = 0
+    val mergeEqual = rowOrColumn.map { this[it] }.moveAndMergeEqual { it * 2 }
+
+    rowOrColumn.withIndex().forEach {
+        if (mergeEqual.size > it.index) {
+            if (this[it.value] != mergeEqual[it.index]) {
+                change++
+            }
+            this[it.value] = mergeEqual[it.index]
+        } else {
+            if (this[it.value] != null) {
+                change++
+            }
+            this[it.value] = null
+        }
+    }
+    return change > 0
+
 }
 
 /*
@@ -64,5 +91,20 @@ fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
-    TODO()
+
+    var change = 0
+
+    for (i in 1..this.width) {
+        val listOf =
+                when (direction) {
+                    Direction.DOWN -> this.getColumn(this.width downTo 1, i)
+                    Direction.UP -> this.getColumn(1..this.width, i)
+                    Direction.LEFT -> this.getRow(i, 1..this.width)
+                    Direction.RIGHT -> this.getRow(i, this.width downTo 1)
+                }
+
+        if (this.moveValuesInRowOrColumn(listOf)) change++
+    }
+
+    return change > 0
 }

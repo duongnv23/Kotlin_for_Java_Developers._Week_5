@@ -1,7 +1,5 @@
 package board
 
-import board.Direction.*
-
 fun createSquareBoard(width: Int): SquareBoard = SquareBoardImpl(width)
 fun <T> createGameBoard(width: Int): GameBoard<T> = GameBoardImpl(width)
 
@@ -33,7 +31,7 @@ open class SquareBoardImpl(override val width: Int) : SquareBoard {
             return emptyList()
         }
 
-        return jRange.iterator().asSequence().takeWhile { it <= width }.map { cells[i-1][it-1] }.toList()
+        return jRange.asSequence().filter { it <= width }.map { cells[i - 1][it - 1] }.toList()
     }
 
     override fun getColumn(iRange: IntProgression, j: Int): List<Cell> {
@@ -41,7 +39,7 @@ open class SquareBoardImpl(override val width: Int) : SquareBoard {
             return emptyList()
         }
 
-        return iRange.iterator().asSequence().takeWhile { it <= width }.map { cells[it-1][j-1] }.toList()
+        return iRange.asSequence().filter { it <= width }.map { cells[it - 1][j - 1] }.toList()
     }
 
     override fun Cell.getNeighbour(direction: Direction): Cell? {

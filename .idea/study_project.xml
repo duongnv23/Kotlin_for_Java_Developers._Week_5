@@ -102,12 +102,12 @@
                                         </MyInitialState>
                                       </option>
                                       <option name="initializedFromDependency" value="false" />
-                                      <option name="length" value="1622" />
+                                      <option name="length" value="1594" />
                                       <option name="offset" value="90" />
                                       <option name="placeholderDependency" />
                                       <option name="placeholderText" value="TODO()" />
                                       <option name="possibleAnswer" value="" />
-                                      <option name="selected" value="false" />
+                                      <option name="selected" value="true" />
                                       <option name="status" value="Unchecked" />
                                       <option name="studentAnswer" />
                                       <option name="useLength" value="true" />
@@ -125,7 +125,7 @@
                                       </option>
                                       <option name="initializedFromDependency" value="false" />
                                       <option name="length" value="6" />
-                                      <option name="offset" value="1765" />
+                                      <option name="offset" value="1737" />
                                       <option name="placeholderDependency" />
                                       <option name="placeholderText" value="TODO()" />
                                       <option name="possibleAnswer" value="" />
@@ -179,12 +179,12 @@
                                         </MyInitialState>
                                       </option>
                                       <option name="initializedFromDependency" value="false" />
-                                      <option name="length" value="6" />
-                                      <option name="offset" value="1227" />
+                                      <option name="length" value="127" />
+                                      <option name="offset" value="1268" />
                                       <option name="placeholderDependency" />
                                       <option name="placeholderText" value="TODO()" />
                                       <option name="possibleAnswer" value="" />
-                                      <option name="selected" value="false" />
+                                      <option name="selected" value="true" />
                                       <option name="status" value="Unchecked" />
                                       <option name="studentAnswer" />
                                       <option name="useLength" value="true" />
@@ -201,12 +201,12 @@
                                         </MyInitialState>
                                       </option>
                                       <option name="initializedFromDependency" value="false" />
-                                      <option name="length" value="6" />
-                                      <option name="offset" value="1705" />
+                                      <option name="length" value="477" />
+                                      <option name="offset" value="1944" />
                                       <option name="placeholderDependency" />
                                       <option name="placeholderText" value="TODO()" />
                                       <option name="possibleAnswer" value="" />
-                                      <option name="selected" value="false" />
+                                      <option name="selected" value="true" />
                                       <option name="status" value="Unchecked" />
                                       <option name="studentAnswer" />
                                       <option name="useLength" value="true" />
@@ -223,19 +223,19 @@
                                         </MyInitialState>
                                       </option>
                                       <option name="initializedFromDependency" value="false" />
-                                      <option name="length" value="6" />
-                                      <option name="offset" value="2052" />
+                                      <option name="length" value="418" />
+                                      <option name="offset" value="2843" />
                                       <option name="placeholderDependency" />
                                       <option name="placeholderText" value="TODO()" />
                                       <option name="possibleAnswer" value="" />
-                                      <option name="selected" value="false" />
+                                      <option name="selected" value="true" />
                                       <option name="status" value="Unchecked" />
                                       <option name="studentAnswer" />
                                       <option name="useLength" value="true" />
                                     </AnswerPlaceholder>
                                   </list>
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/games/game2048/Game2048.kt" />
                                 <option name="text" value="package games.game2048&#10;&#10;import board.Cell&#10;import board.Direction&#10;import board.GameBoard&#10;import board.createGameBoard&#10;import games.game.Game&#10;&#10;/*&#10; * Your task is to implement the game 2048 https://en.wikipedia.org/wiki/2048_(video_game).&#10; * Implement the utility methods below.&#10; *&#10; * After implementing it you can try to play the game running 'PlayGame2048'.&#10; */&#10;fun newGame2048(initializer: Game2048Initializer&lt;Int&gt; = RandomGame2048Initializer): Game =&#10;        Game2048(initializer)&#10;&#10;class Game2048(private val initializer: Game2048Initializer&lt;Int&gt;) : Game {&#10;    private val board = createGameBoard&lt;Int?&gt;(4)&#10;&#10;    override fun initialize() {&#10;        repeat(2) {&#10;            board.addNewValue(initializer)&#10;        }&#10;    }&#10;&#10;    override fun canMove() = board.any { it == null }&#10;&#10;    override fun hasWon() = board.any { it == 2048 }&#10;&#10;    override fun processMove(direction: Direction) {&#10;        if (board.moveValues(direction)) {&#10;            board.addNewValue(initializer)&#10;        }&#10;    }&#10;&#10;    override fun get(i: Int, j: Int): Int? = board.run { get(getCell(i, j)) }&#10;}&#10;&#10;/*&#10; * Add a new value produced by 'initializer' to a specified cell in a board.&#10; */&#10;fun GameBoard&lt;Int?&gt;.addNewValue(initializer: Game2048Initializer&lt;Int&gt;) {&#10;    TODO()&#10;}&#10;&#10;/*&#10; * Update the values stored in a board,&#10; * so that the values were &quot;moved&quot; in a specified rowOrColumn only.&#10; * Use the helper function 'moveAndMergeEqual' (in Game2048Helper.kt).&#10; * The values should be moved to the beginning of the row (or column),&#10; * in the same manner as in the function 'moveAndMergeEqual'.&#10; * Return 'true' if the values were moved and 'false' otherwise.&#10; */&#10;fun GameBoard&lt;Int?&gt;.moveValuesInRowOrColumn(rowOrColumn: List&lt;Cell&gt;): Boolean {&#10;    TODO()&#10;}&#10;&#10;/*&#10; * Update the values stored in a board,&#10; * so that the values were &quot;moved&quot; to the specified direction&#10; * following the rules of the 2048 game .&#10; * Use the 'moveValuesInRowOrColumn' function above.&#10; * Return 'true' if the values were moved and 'false' otherwise.&#10; */&#10;fun GameBoard&lt;Int?&gt;.moveValues(direction: Direction): Boolean {&#10;    TODO()&#10;}" />
                                 <option name="trackChanges" value="true" />
@@ -262,19 +262,19 @@
                                         </MyInitialState>
                                       </option>
                                       <option name="initializedFromDependency" value="false" />
-                                      <option name="length" value="6" />
-                                      <option name="offset" value="730" />
+                                      <option name="length" value="0" />
+                                      <option name="offset" value="722" />
                                       <option name="placeholderDependency" />
                                       <option name="placeholderText" value="TODO()" />
                                       <option name="possibleAnswer" value="" />
-                                      <option name="selected" value="false" />
+                                      <option name="selected" value="true" />
                                       <option name="status" value="Unchecked" />
                                       <option name="studentAnswer" />
                                       <option name="useLength" value="true" />
                                     </AnswerPlaceholder>
                                   </list>
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/games/game2048/Game2048Helper.kt" />
                                 <option name="text" value="package games.game2048&#10;&#10;/*&#10; * This function moves all the non-null elements to the beginning of the list&#10; * (by removing nulls) and merges equal elements.&#10; * The parameter 'merge' specifies the way how to merge equal elements:&#10; * it returns a new element that should be present in the resulting list&#10; * instead of two merged elements.&#10; *&#10; * If the function 'merge(&quot;a&quot;)' returns &quot;aa&quot;,&#10; * then the function 'moveAndMergeEqual' transforms the input in the following way:&#10; *   a, a, b -&gt; aa, b&#10; *   a, null -&gt; a&#10; *   b, null, a, a -&gt; b, aa&#10; *   a, a, null, a -&gt; aa, a&#10; *   a, null, a, a -&gt; aa, a&#10; *&#10; * You can find more examples in 'TestGame2048Helper'.&#10;*/&#10;fun &lt;T : Any&gt; List&lt;T?&gt;.moveAndMergeEqual(merge: (T) -&gt; T): List&lt;T&gt; =&#10;        TODO()&#10;&#10;" />
                                 <option name="trackChanges" value="true" />
@@ -301,19 +301,19 @@
                                         </MyInitialState>
                                       </option>
                                       <option name="initializedFromDependency" value="false" />
-                                      <option name="length" value="6" />
-                                      <option name="offset" value="820" />
+                                      <option name="length" value="165" />
+                                      <option name="offset" value="842" />
                                       <option name="placeholderDependency" />
                                       <option name="placeholderText" value="TODO()" />
                                       <option name="possibleAnswer" value="" />
-                                      <option name="selected" value="false" />
+                                      <option name="selected" value="true" />
                                       <option name="status" value="Unchecked" />
                                       <option name="studentAnswer" />
                                       <option name="useLength" value="true" />
                                     </AnswerPlaceholder>
                                   </list>
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/games/game2048/Game2048Initializer.kt" />
                                 <option name="text" value="package games.game2048&#10;&#10;import board.Cell&#10;import board.GameBoard&#10;import kotlin.random.Random&#10;&#10;interface Game2048Initializer&lt;T&gt; {&#10;    /*&#10;     * Specifies the cell and the value that should be added to this cell.&#10;     */&#10;    fun nextValue(board: GameBoard&lt;T?&gt;): Pair&lt;Cell, T&gt;?&#10;}&#10;&#10;object RandomGame2048Initializer: Game2048Initializer&lt;Int&gt; {&#10;    private fun generateRandomStartValue(): Int =&#10;            if (Random.nextInt(10) == 9) 4 else 2&#10;&#10;    /*&#10;     * Generate a random value and a random cell among free cells&#10;     * that given value should be added to.&#10;     * The value should be 2 for 90% cases, and 4 for the rest of the cases.&#10;     * Use the 'generateRandomStartValue' function above.&#10;     * If the board is full return null.&#10;     */&#10;    override fun nextValue(board: GameBoard&lt;Int?&gt;): Pair&lt;Cell, Int&gt;? {&#10;        TODO()&#10;    }&#10;}" />
                                 <option name="trackChanges" value="true" />
@@ -494,7 +494,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="test/games/board/TestGameBoard.kt" />
                                 <option name="text" value="package games.board&#10;&#10;import board.GameBoard&#10;import board.createGameBoard&#10;import org.junit.Assert&#10;import org.junit.Test&#10;&#10;class TestGameBoard {&#10;    operator fun &lt;T&gt; GameBoard&lt;T&gt;.get(i: Int, j: Int) = get(getCell(i, j))&#10;    operator fun &lt;T&gt; GameBoard&lt;T&gt;.set(i: Int, j: Int, value: T) = set(getCell(i, j), value)&#10;&#10;    @Test&#10;    fun testGetAndSetElement() {&#10;        val gameBoard = createGameBoard&lt;Char&gt;(2)&#10;        gameBoard[1, 1] = 'a'&#10;        Assert.assertEquals('a', gameBoard[1, 1])&#10;    }&#10;&#10;    @Test&#10;    fun testFilter() {&#10;        val gameBoard = createGameBoard&lt;Char&gt;(2)&#10;        gameBoard[1, 1] = 'a'&#10;        gameBoard[1, 2] = 'b'&#10;        val cells = gameBoard.filter { it == 'a' }&#10;        Assert.assertEquals(1, cells.size)&#10;        val cell = cells.first()&#10;        Assert.assertEquals(1, cell.i)&#10;        Assert.assertEquals(1, cell.j)&#10;    }&#10;&#10;    @Test&#10;    fun testAll() {&#10;        val gameBoard = createGameBoard&lt;Char&gt;(2)&#10;        gameBoard[1, 1] = 'a'&#10;        gameBoard[1, 2] = 'a'&#10;        Assert.assertFalse(gameBoard.all { it == 'a' })&#10;        gameBoard[2, 1] = 'a'&#10;        gameBoard[2, 2] = 'a'&#10;        Assert.assertTrue(gameBoard.all { it == 'a' })&#10;    }&#10;&#10;    @Test&#10;    fun testAny() {&#10;        val gameBoard = createGameBoard&lt;Char&gt;(2)&#10;        gameBoard[1, 1] = 'a'&#10;        gameBoard[1, 2] = 'b'&#10;        Assert.assertTrue(gameBoard.any { it in 'a'..'b' })&#10;        Assert.assertTrue(gameBoard.any { it == null })&#10;    }&#10;}" />
                                 <option name="trackChanges" value="true" />
@@ -510,7 +510,7 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="test/games/board/TestSquareBoard.kt" />
                                 <option name="text" value="package games.board&#10;&#10;import board.Cell&#10;import board.Direction.*&#10;import board.createSquareBoard&#10;import org.junit.Assert&#10;import org.junit.Test&#10;&#10;class TestSquareBoard {&#10;&#10;    private fun Cell?.asString() = if (this != null) &quot;($i, $j)&quot; else &quot;&quot;&#10;&#10;    private fun Collection&lt;Cell&gt;.asString() = joinToString(prefix = &quot;[&quot;, postfix = &quot;]&quot;) { it.asString() }&#10;&#10;    @Test&#10;    fun testAllCells() {&#10;        val board = createSquareBoard(2)&#10;        val cells = board.getAllCells().sortedWith(compareBy&lt;Cell&gt; { it.i }.thenBy { it.j })&#10;        Assert.assertEquals(&quot;[(1, 1), (1, 2), (2, 1), (2, 2)]&quot;, cells.asString())&#10;    }&#10;&#10;    @Test&#10;    fun testCell() {&#10;        val board = createSquareBoard(2)&#10;        val cell = board.getCellOrNull(1, 2)&#10;        Assert.assertEquals(1, cell?.i)&#10;        Assert.assertEquals(2, cell?.j)&#10;    }&#10;&#10;    @Test&#10;    fun testNoCell() {&#10;        val board = createSquareBoard(2)&#10;        val cell = board.getCellOrNull(3, 3)&#10;        Assert.assertEquals(null, cell)&#10;    }&#10;&#10;    @Test&#10;    fun testRow() {&#10;        val board = createSquareBoard(2)&#10;        val row = board.getRow(1, 1..2)&#10;        Assert.assertEquals(&quot;[(1, 1), (1, 2)]&quot;, row.asString())&#10;    }&#10;&#10;    @Test&#10;    fun testRowReversed() {&#10;        val board = createSquareBoard(2)&#10;        val row = board.getRow(1, 2 downTo 1)&#10;        Assert.assertEquals(&quot;[(1, 2), (1, 1)]&quot;, row.asString())&#10;    }&#10;&#10;    @Test&#10;    fun testRowWrongRange() {&#10;        val board = createSquareBoard(2)&#10;        val row = board.getRow(1, 1..2)&#10;        Assert.assertEquals(&quot;[(1, 1), (1, 2)]&quot;, row.asString())&#10;    }&#10;&#10;    @Test&#10;    fun testNeighbour() {&#10;        val board = createSquareBoard(2)&#10;        with(board) {&#10;            val cell = getCellOrNull(1, 1)&#10;            Assert.assertNotNull(cell)&#10;            Assert.assertEquals(null, cell!!.getNeighbour(UP))&#10;            Assert.assertEquals(null, cell.getNeighbour(LEFT))&#10;            Assert.assertEquals(&quot;(2, 1)&quot;, cell.getNeighbour(DOWN).asString())&#10;            Assert.assertEquals(&quot;(1, 2)&quot;, cell.getNeighbour(RIGHT).asString())&#10;        }&#10;    }&#10;}&#10;" />
                                 <option name="trackChanges" value="true" />

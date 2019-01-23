@@ -1,13 +1,19 @@
 package games.board
 
+import board.Cell
 import board.GameBoard
 import board.createGameBoard
+import board.createSquareBoard
 import org.junit.Assert
 import org.junit.Test
 
 class TestGameBoard {
     operator fun <T> GameBoard<T>.get(i: Int, j: Int) = get(getCell(i, j))
     operator fun <T> GameBoard<T>.set(i: Int, j: Int, value: T) = set(getCell(i, j), value)
+
+    private fun Cell?.asString() = if (this != null) "($i, $j)" else ""
+
+    private fun Collection<Cell>.asString() = joinToString(prefix = "[", postfix = "]") { it.asString() }
 
     @Test
     fun testGetAndSetElement() {
