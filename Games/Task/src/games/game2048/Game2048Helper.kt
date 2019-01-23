@@ -20,7 +20,6 @@ package games.game2048
 fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> {
     val indicator = this.map { false }.toBooleanArray()
     val result: MutableList<T> = mutableListOf()
-    var next = 0
 
     for (i in 0 until this.size) {
         if (indicator[i]) {
