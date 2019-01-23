@@ -1,5 +1,7 @@
 package games.gameOfFifteen
 
+import games.gameOfFifteen.isEven
+
 interface GameOfFifteenInitializer {
     /*
      * Even permutation of numbers 1..15
@@ -17,7 +19,11 @@ class RandomGameInitializer : GameOfFifteenInitializer {
      * by swapping two numbers).
      */
     override val initialPermutation by lazy {
-        TODO()
+        var shuffled: List<Int>
+        do {
+            shuffled = (1..15).shuffled()
+        } while (!isEven(shuffled))
+        shuffled
     }
 }
 
