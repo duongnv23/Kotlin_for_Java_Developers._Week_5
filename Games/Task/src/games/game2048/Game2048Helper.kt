@@ -18,40 +18,49 @@ package games.game2048
  * You can find more examples in 'TestGame2048Helper'.
 */
 fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> {
-    val nonNullList = this.filterNotNull()
-    val mutableList = this.filter { it != null }.toMutableList()
+    val indicator = this.map { false }.toBooleanArray()
+    val result: MutableList<T> = mutableListOf()
+    var next = 0
 
-    val mergeVector = mutableListOf<Boolean>()
-    var lastM = false
-    var lastV: T? = null
+    for (i in 0 until this.size) {
+        if (indicator[i]) {
+            continue
+        } else {
+            val current = this[i]
+            if (current != null) {
+                if (i + 1 < size) {
+                    for (j in i + 1 until size) {
+                        val next = this[j]
+                        if (next == null) {
+                            if(j == size-1){
+                                result.add(current)
+                            }
+                            indicator[j] = true
+                            continue
+                        } else {
+                            if (current == next) {
+                                result.add(merge(current))
+                                indicator[j] = true
+                            } else {
+                                result.add(current)
+                            }
+                            break
+                        }
+                    }
 
-    nonNullList.withIndex().forEach {
-        lastM = canMerge(it.value, lastM, lastV)
-        lastV = it.value
-        mergeVector.add(lastM)
-    }
 
-    mergeVector.withIndex().forEach {
-        if (it.value) {
-            mutableList[it.index] = nonNullList[it.index]
+                } else {
+                    result.add(current)
+                }
+
+            }
+
+            indicator[i] = true
         }
-        mutableList[it.index - 1] = null
     }
 
-
-    return mutableList.filterNotNull()
+    return result.toList()
 }
 
-private fun <T> canMerge(currentValue: T, lastM: Boolean, lastValue: T?): Boolean {
-    if (currentValue == null || lastValue == null) {
-        return false
-    }
-
-    if (lastM) {
-        return false
-    }
-
-    return currentValue == lastValue
-}
 
 
